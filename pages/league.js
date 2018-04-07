@@ -6,6 +6,9 @@ export default class extends React.Component {
     constructor(props){
         super(props)
     }
+    componentWillMount(){
+        console.log('hola')
+    }
     render(){
         const { url } = this.props
         return (

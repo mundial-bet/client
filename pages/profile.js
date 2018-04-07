@@ -3,7 +3,7 @@ import { Layout } from '../components/layout/Layout'
 import Link from 'next/link'
 import { Button } from 'semantic-ui-react'
 import { CreateLeague } from '../components/CreateLeague'
-
+import { getData } from '../shared/getData'
 const isLoggedIn = {
     username: "Manuel",
     email: "manueldelpinolucena@gmail.com"
@@ -29,6 +29,7 @@ class Profile extends React.Component {
     }
   }
   componentDidMount(){
+    getData().then(res => console.log(res))
     const user = isLoggedIn
     const leagues = userLeagues.map(({ league, rank, totalPoints}) => {
         let { _id, name, participants } = league
