@@ -14,6 +14,8 @@ export default () => (
     </div>
     <style jsx>{`
       .mainContainer{
+        position: relative;
+        top: 40px;
         display: flex;
         flex-direction: column;
         align-items: center;

@@ -1,6 +1,24 @@
 import React from 'react'
 import { Menu } from 'semantic-ui-react'
-
+import Link from 'next/link'
+const items = [
+    { 
+        title: 'Login',
+        route: '/login'
+    },
+    { 
+        title: 'Sign Up',
+        route: '/signup'
+    },
+    { 
+        title: 'Log Out',
+        route: '/index'
+    },
+    { 
+        title: 'How it works?',
+        route: '/how-it-works'
+    }
+]
 export class Header extends React.Component {
     constructor(props) {
         super(props)
@@ -17,20 +35,17 @@ export class Header extends React.Component {
                         Home
                         </Menu.Item>
                     <div className={ open ? '' : 'menuHide'}>
-                        <Menu.Item>
-                            Profile
-                        </Menu.Item>
-                        <Menu.Item>
-                            LogOut
-                        </Menu.Item>
-                        <Menu.Item>
-                            How it works?
-                        </Menu.Item>
+                        {items.map((e,i) => (
+                            <Menu.Item key={i}>
+                                <Link href={e.route}><a>{e.title}</a></Link>
+                            </Menu.Item>
+                        ))}
                     </div>
                 </Menu>
                 <style jsx>{`
                     .mainContainer {
                         position: absolute;
+                        z-index: 2;
                         width: 100%;
                     }
                     .menuHide{
