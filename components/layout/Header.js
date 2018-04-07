@@ -17,6 +17,10 @@ const items = [
     { 
         title: 'How it works?',
         route: '/how-it-works'
+    },
+    { 
+        title: 'Profile',
+        route: '/profile'
     }
 ]
 export class Header extends React.Component {
