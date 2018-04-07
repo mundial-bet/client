@@ -1,5 +1,5 @@
-import React from 'react';
-import { Layout } from '../components/layout/Layout';
+import React from 'react'
+import { Layout } from '../components/layout/Layout'
 import Link from 'next/link'
 import { Button } from 'semantic-ui-react'
 import { CreateLeague } from '../components/CreateLeague'
@@ -11,6 +11,7 @@ const isLoggedIn = {
 const relUserLeague = {
 
     league: {
+        _id: "1",
         name: "Ironhack",
         participants: 2,
     },
@@ -30,8 +31,8 @@ class Profile extends React.Component {
   componentDidMount(){
     const user = isLoggedIn
     const leagues = userLeagues.map(({ league, rank, totalPoints}) => {
-        let { name, participants } = league
-        return ({ name, participants, rank, totalPoints})
+        let { _id, name, participants } = league
+        return ({ _id, name, participants, rank, totalPoints})
     })
     this.setState( { user, leagues })
   }
@@ -42,7 +43,7 @@ class Profile extends React.Component {
         <div className='mainContainer'>
             <h2>Welcome {user.username}</h2>
             {leagues.map((e,i) => (
-                <Link href='/league' key={i}>
+                <Link as={`/league/${e._id}`} href={`/league?id=${e._id}`} key={i}>
                     <a>
                         <p><b>{e.name}</b> Rank: <i>{e.rank}/{e.participants}</i> Total: {e.totalPoints} pts</p>
                     </a>
